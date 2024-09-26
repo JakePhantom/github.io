@@ -1,0 +1,12 @@
+flowchart TD
+    Start([Start]) --> GenerateRandomNumber[("Generate Random Number in Correct Range")]
+    GenerateRandomNumber --> ValidateUserInput[("Validate User Input")]
+    ValidateUserInput -->|Valid Input| CheckGuess[("Check User Guess")]
+    ValidateUserInput -->|Invalid Input| ProvideErrorMessage[("Provide Error Message")]
+    ProvideErrorMessage --> ValidateUserInput
+    CheckGuess -->|Correct Guess| ProvideCorrectFeedback[("Provide Correct Feedback")]
+    CheckGuess -->|Too High| ProvideTooHighFeedback[("Provide 'Too High' Feedback")]
+    CheckGuess -->|Too Low| ProvideTooLowFeedback[("Provide 'Too Low' Feedback")]
+    ProvideCorrectFeedback --> End
+    ProvideTooHighFeedback --> ValidateUserInput
+    ProvideTooLowFeedback --> ValidateUserInput
